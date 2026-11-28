@@ -222,24 +222,42 @@
       .hero-note { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
       .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
       @media (min-width: 900px) { .hero-cta { align-items: flex-start; } }
+      /* compact SNS link row inside the hero, under the reservation buttons */
+      .hero-sns {
+        display: flex; flex-wrap: wrap; gap: 6px 18px;
+        justify-content: center; margin-top: 2px;
+      }
+      @media (min-width: 900px) { .hero-sns { justify-content: flex-start; flex-wrap: nowrap; gap: 14px; } }
+      .hero-sns a {
+        display: inline-flex; align-items: center; gap: 7px;
+        min-height: 32px;
+        text-decoration: none; color: var(--ink);
+        font-size: 13px; font-weight: 500; letter-spacing: .04em;
+        transition: color .25s ease;
+      }
+      .hero-sns a:hover { color: var(--mori); }
+      @media (prefers-color-scheme: dark) { .hero-sns a:hover { color: var(--gold-soft); } }
+      .hero-sns .sns-ic { width: 30px; height: 30px; border-radius: 9px; }
+      .hero-sns .sns-ic svg { width: 17px; height: 17px; }
       /* mobile hero: eyecatch photo comes right after the headline,
          then price chips and reservation buttons — all inside the first view.
          The photo keeps its natural aspect ratio (no cropping) so the sign
          text and all three cats stay fully visible. */
       @media (max-width: 899px) {
-        .hero { padding: 20px 0 32px; }
+        .hero { padding: 14px 0 28px; }
         .hero-wrap { display: flex; flex-direction: column; }
-        .hero-welcome { order: 1; margin-bottom: 8px; }
-        .hero-place { order: 2; margin-bottom: 6px; }
-        .hero h1 { order: 3; font-size: clamp(29px, 8vw, 34px); margin-bottom: 2px; }
-        .hero-catch { order: 4; margin: 4px 0 14px; }
+        .hero-welcome { order: 1; margin-bottom: 6px; font-size: 14px; }
+        .hero-place { order: 2; margin-bottom: 4px; }
+        .hero h1 { order: 3; font-size: clamp(28px, 7.8vw, 32px); margin-bottom: 2px; }
+        .hero-catch { order: 4; margin: 2px 0 10px; }
         .hero-wrap > figure { order: 5; width: 100%; }
-        .hero-main-photo { margin-bottom: 8px; }
-        .hero-photo-cap { margin-bottom: 14px; }
-        .hero-points { order: 6; margin-bottom: 14px; }
-        .hero-cta { order: 7; gap: 10px; }
-        .hero-cta .btn-tel { padding: 13px 28px; min-height: 52px; }
-        .hero-cta .btn-line { padding: 10px 24px; min-height: 48px; }
+        .hero-main-photo { margin: 0 auto 6px; max-width: 280px; }
+        .hero-photo-cap { margin-bottom: 10px; }
+        .hero-points { order: 6; margin-bottom: 10px; }
+        .hero-points li { padding: 5px 11px; font-size: 12.5px; }
+        .hero-cta { order: 7; gap: 8px; }
+        .hero-cta .btn-tel { padding: 12px 28px; min-height: 50px; }
+        .hero-cta .btn-line { padding: 9px 24px; min-height: 46px; }
         .hero-subphotos { order: 8; width: 100%; margin-top: 22px; }
       }
 
@@ -725,6 +743,24 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.262.078C5.456.078.341 4.663.341 10.66c0 5.375 4.698 9.772 10.61 9.772 1.232 0 2.426-.176 3.54-.518.144-.045.341-.015.438.09.096.104.123.252.108.397l-.235 2.315c-.022.256.146.495.406.54.068.012.137.007.203-.015.107-.035 2.63-1.005 4.914-3.567 2.122-2.381 3.19-5.235 3.19-8.485C23.657 4.663 18.54.078 12.262.078zm5.808 13.443a.634.634 0 0 1-.637.637H13.99a.635.635 0 0 1-.447-.186.635.635 0 0 1-.186-.45V9.755a.634.634 0 0 1 .635-.637.634.634 0 0 1 .636.637v3.132h2.806a.634.634 0 0 1 .636.634zm-3.572 0a.634.634 0 0 1-.637.637.635.635 0 0 1-.636-.637V9.755c0-.351.285-.637.636-.637.351 0 .637.285.637.637zm5.508.001a.635.635 0 0 1-.448.186h-2.014a.635.635 0 0 1-.449-.186.635.635 0 0 1-.186-.45V9.755c0-.168.067-.33.186-.45a.635.635 0 0 1 .449-.186h2.014c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.683h1.378c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.68h1.378c.351 0 .636.285.636.636zm-8.683.636a.635.635 0 0 1-.636-.637V9.755a.635.635 0 0 1 .636-.637c.171 0 .334.07.452.192l2.09 2.15V9.755a.634.634 0 0 1 1.27 0v3.767a.635.635 0 0 1-1.085.448l-2.091-2.15v1.701c0 .351-.285.637-.636.637z"/></svg>
             LINEで予約・相談
           </a>
+          <div class="hero-sns" aria-label="SNSリンク">
+            <a href="https://line.me/R/ti/p/@cak8244d" target="_blank" rel="noopener" onclick="gtag('event','line_click',{link_location:'hero_sns'});">
+              <span class="sns-ic line"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.262.078C5.456.078.341 4.663.341 10.66c0 5.375 4.698 9.772 10.61 9.772 1.232 0 2.426-.176 3.54-.518.144-.045.341-.015.438.09.096.104.123.252.108.397l-.235 2.315c-.022.256.146.495.406.54.068.012.137.007.203-.015.107-.035 2.63-1.005 4.914-3.567 2.122-2.381 3.19-5.235 3.19-8.485C23.657 4.663 18.54.078 12.262.078zm5.808 13.443a.634.634 0 0 1-.637.637H13.99a.635.635 0 0 1-.447-.186.635.635 0 0 1-.186-.45V9.755a.634.634 0 0 1 .635-.637.634.634 0 0 1 .636.637v3.132h2.806a.634.634 0 0 1 .636.634zm-3.572 0a.634.634 0 0 1-.637.637.635.635 0 0 1-.636-.637V9.755c0-.351.285-.637.636-.637.351 0 .637.285.637.637zm5.508.001a.635.635 0 0 1-.448.186h-2.014a.635.635 0 0 1-.449-.186.635.635 0 0 1-.186-.45V9.755c0-.168.067-.33.186-.45a.635.635 0 0 1 .449-.186h2.014c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.683h1.378c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.68h1.378c.351 0 .636.285.636.636zm-8.683.636a.635.635 0 0 1-.636-.637V9.755a.635.635 0 0 1 .636-.637c.171 0 .334.07.452.192l2.09 2.15V9.755a.634.634 0 0 1 1.27 0v3.767a.635.635 0 0 1-1.085.448l-2.091-2.15v1.701c0 .351-.285.637-.636.637z"/></svg></span>
+              LINE公式
+            </a>
+            <a href="https://ameblo.jp/f2-wanko/" target="_blank" rel="noopener" onclick="gtag('event','sns_click',{link_location:'hero_sns',link_name:'blog'});">
+              <span class="sns-ic blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg></span>
+              公式ブログ
+            </a>
+            <a href="https://www.facebook.com/himekiseitai/" target="_blank" rel="noopener" onclick="gtag('event','sns_click',{link_location:'hero_sns',link_name:'facebook'});">
+              <span class="sns-ic fb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg></span>
+              Facebook
+            </a>
+            <a href="https://lit.link/himekiseitai" target="_blank" rel="noopener" onclick="gtag('event','sns_click',{link_location:'hero_sns',link_name:'litlink'});">
+              <span class="sns-ic link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></span>
+              リンクまとめ
+            </a>
+          </div>
           <p class="hero-note">ご予約・お問い合わせはお電話（0266-75-1797）またはLINEで承ります（完全予約制）</p>
         </div>
         <div class="hero-subphotos">
